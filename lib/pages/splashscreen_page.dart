@@ -3,7 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:golek_gawe/pages/pages/onboarding_page.dart';
+import 'package:golek_gawe/pages/onboarding_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
