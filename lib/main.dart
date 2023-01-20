@@ -7,7 +7,7 @@ import 'pages/onboarding_page.dart';
 void main() {
   runApp(MyApp());
 }
-
+//Main App
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
