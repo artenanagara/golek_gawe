@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:golek_gawe/pages/signin_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -77,7 +78,14 @@ class OnboardingPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(40),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignInPage()
+                                ),
+                          );
+                        },
                          child: Text('Sign In',
                          style: GoogleFonts.poppins(
                           color: Color(0xffffffff),
@@ -86,7 +94,7 @@ class OnboardingPage extends StatelessWidget {
                          ),)),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           )
