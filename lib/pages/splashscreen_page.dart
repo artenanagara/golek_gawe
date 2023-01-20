@@ -7,6 +7,7 @@ import 'package:golek_gawe/pages/onboarding_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
+
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
