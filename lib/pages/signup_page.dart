@@ -4,9 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:golek_gawe/theme.dart';
 import 'package:golek_gawe/pages/signin_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:email_validator/email_validator.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  bool isEmailValid = true;
+
+TextEditingController emailController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +61,12 @@ class SignUpPage extends StatelessWidget {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100),
-                          borderSide: BorderSide.none,
-                          ),
+                          borderSide: BorderSide(color: Color(0xff4141A4)),
+                          
+                        ),
+                      ),
+                      style: TextStyle(
+                        color: Color(0xff4141A4),
                       ),
                       ),
                       SizedBox(height: 20,),
@@ -60,6 +74,19 @@ class SignUpPage extends StatelessWidget {
                       style: titleTextStyle,),
                       SizedBox(height: 8,),
                       TextFormField(
+                        controller: emailController,
+                    onChanged: (value) {
+                      bool isValid = EmailValidator.validate(value);
+                      if (isValid) {
+                        setState(() {
+                          isEmailValid = true;
+                        });
+                      } else {
+                        setState(() {
+                          isEmailValid = false;
+                        });
+                      }
+                    }, 
                         decoration: 
                         InputDecoration(
                           fillColor: Color(0xffF1F0F5),
@@ -70,8 +97,11 @@ class SignUpPage extends StatelessWidget {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100),
-                          borderSide: BorderSide.none,
+                          borderSide: BorderSide(color: isEmailValid ? Color(0xff4141a4) : Color(0xffFF5B5B)),
                           ),
+                      ),
+                      style: TextStyle(
+                        color: isEmailValid ? Color(0xff4141a4) : Color(0xffFF5B5B),
                       ),
                       ),
                       SizedBox(height: 20,),
@@ -79,6 +109,7 @@ class SignUpPage extends StatelessWidget {
                       style: titleTextStyle,),
                       SizedBox(height: 8,),
                       TextFormField(
+                        obscureText: true,
                         decoration: 
                         InputDecoration(
                           fillColor: Color(0xffF1F0F5),
@@ -89,8 +120,11 @@ class SignUpPage extends StatelessWidget {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100),
-                          borderSide: BorderSide.none,
+                          borderSide: BorderSide(color: Color(0xff4141A4)),
                           ),
+                      ),
+                       style: TextStyle(
+                        color: Color(0xff4141A4),
                       ),
                       ),
                       SizedBox(height: 20,),
@@ -108,8 +142,11 @@ class SignUpPage extends StatelessWidget {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100),
-                          borderSide: BorderSide.none,
+                          borderSide: BorderSide(color: Color(0xff4141A4)),
                           ),
+                      ),
+                       style: TextStyle(
+                        color: Color(0xff4141A4),
                       ),
                       ),
                     ],
