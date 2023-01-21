@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:golek_gawe/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:golek_gawe/pages/signup_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -23,7 +24,7 @@ TextEditingController emailController = TextEditingController(text: '');
       home: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(top: 0, left: 24, right: 24,),
+            padding: const EdgeInsets.only(top: 10, left: 24, right: 24,),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -153,7 +154,12 @@ TextEditingController emailController = TextEditingController(text: '');
                       (Color(0xffB3B5C4)),
                     ),
                     onPressed: () { 
-                      
+                      Navigator.push(
+                            context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignUpPage()
+                                ),
+                          );
                     },
                     child: Text('Create New Account',
                     style: TextStyle(
@@ -163,7 +169,7 @@ TextEditingController emailController = TextEditingController(text: '');
                   ),
                 ),
               ],
-            )
+            ),
           ),
         ),
       ),

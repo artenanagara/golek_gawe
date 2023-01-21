@@ -22,7 +22,8 @@ class OnboardingPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 80, right: 30, left: 30),
-            child: Column( crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column( 
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Build Your Next Future Career Like a Master',
                 style: GoogleFonts.poppins(
