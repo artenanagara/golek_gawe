@@ -1,12 +1,21 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:golek_gawe/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:email_validator/email_validator.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  bool isEmailValid = true;
+
+TextEditingController emailController = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,6 +53,20 @@ class SignInPage extends StatelessWidget {
                   ),
                   SizedBox(height: 8,),
                   TextFormField(
+                    controller: emailController,
+                    onChanged: (value) {
+                      bool isValid = EmailValidator.validate(value);
+                      if (isValid) {
+                        setState(() {
+                          isEmailValid = true;
+                        });
+                      } else {
+                        setState(() {
+                          isEmailValid = false;
+                        });
+                      }
+                    }, 
+
                     decoration: 
                     InputDecoration(
                       fillColor: Color(0xffF1F0F5),
@@ -54,9 +77,14 @@ class SignInPage extends StatelessWidget {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(100),
-                      borderSide: BorderSide.none,),
+                      borderSide: BorderSide(color: isEmailValid ? Color(0xff4141a4) : Color(0xffFF5B5B)),
+                      ),
                       hintText: 'Your Email Address',
-                  ),)
+                  ),
+                  style: TextStyle(
+                        color: isEmailValid ? Color(0xff4141a4) : Color(0xffFF5B5B),
+                      ),
+                  ),
                 ],
               ),
               SizedBox(height: 16,),
@@ -68,6 +96,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   SizedBox(height: 8,),
                   TextFormField(
+                    obscureText: true,
                     decoration: 
                     InputDecoration(
                       fillColor: Color(0xffF1F0F5),
@@ -78,7 +107,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(100),
-                      borderSide: BorderSide.none,),
+                      borderSide: BorderSide(color: Color(0xff4141a4)),),
                       hintText: 'Your Password',
                   ),)
                 ],
