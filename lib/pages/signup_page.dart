@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:golek_gawe/theme.dart';
@@ -15,11 +15,45 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool isEmailValid = true;
+  bool isUploadedImage = false;
 
 TextEditingController emailController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
+    Widget uploadedImage(){
+      return Center(
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              isUploadedImage = ! isUploadedImage;
+            });
+          },
+          child: Column(
+            children: [
+              Image.asset('assets/images/upload_pic.png', width: 120,),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget showedImage(){
+      return Center(
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              isUploadedImage = ! isUploadedImage;
+            });
+          },
+          child: Column(
+            children: [
+              Image.asset('assets/images/show_images.png', width: 120,),
+            ],
+          ),
+        ),
+      );
+    }
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -36,13 +70,7 @@ TextEditingController emailController = TextEditingController(text: '');
                   Text('Build Your Career',
                   style: subTtitleTextStyle,),
                   SizedBox(height: 50,),
-                  Center(
-                    child: Column(
-                      children: [
-                        Image.asset('assets/images/upload_pic.png', width: 120,),
-                      ],
-                    ),
-                  ),
+                  isUploadedImage ? showedImage() : uploadedImage(),
                   SizedBox(height: 50,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,10 +176,10 @@ TextEditingController emailController = TextEditingController(text: '');
                        style: TextStyle(
                         color: Color(0xff4141A4),
                       ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 40,),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40,),
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.only(top:30),
@@ -207,12 +235,12 @@ TextEditingController emailController = TextEditingController(text: '');
                         ),),
                       ),
                     ),
-                ]  
-              )  
-            ),
-          ],
-        ),
+              ]  
+            )  
+          ),
+        ],
       ),
-   );
-  }
+    ),
+  );
 }
+  }
